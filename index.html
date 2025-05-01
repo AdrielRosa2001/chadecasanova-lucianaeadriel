@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=glacial-indifference@400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="src\img\logo_cha_svg.svg" type="image/svg+xml" />
+    <title>Chá de Casa Nova - Luciana & Adriel</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+      body {
+        background-image: url("src/img/backgorund_img.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .montserrat {
+        font-family: "Montserrat", sans-serif;
+      }
+      .glacial {
+        font-family: "Glacial Indifference", sans-serif;
+      }
+      /* Animações */
+      @keyframes leftToRight {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes bottomToTop {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeBlur {
+        from {
+          opacity: 0;
+          filter: blur(10px);
+        }
+        to {
+          opacity: 1;
+          filter: blur(0);
+        }
+      }
+
+      /* Estado inicial de todos */
+      #bloco-backgroun,
+      #bloco-anfitriao,
+      #bloco-logo-cha,
+      #bloco-textos-centrais,
+      #botao-01,
+      #botao-02 {
+        opacity: 0;
+      }
+
+      /* Classes ativadas */
+      .animar-left {
+        animation: leftToRight 0.8s ease forwards;
+      }
+      .animar-blur {
+        animation: fadeBlur 0.8s ease forwards;
+      }
+      .animar-bottom {
+        animation: bottomToTop 0.8s ease forwards;
+      }
+    </style>
+  </head>
+  <body class="w-full flex items-center justify-center">
+    <main
+      class="w-full max-w-lg p-5 m-4 flex flex-col items-center justify-center rounded-2xl shadow-2xl backdrop-blur-xs backdrop-brightness-65 pass transform transition hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
+      id="bloco-backgroun"
+    >
+      <div class="w-full flex flex-row" id="bloco-anfitriao">
+        <img
+          class="w-11 h-11 rounded-full"
+          src="src\img\foto_perfil.jpg"
+          alt="imagem de perfil dos anfitriões"
+        />
+        <div class="flex flex-col ml-2">
+          <p class="text-white montserrat" style="font-size: 10px">
+            UM CONVITE ESPECIAL DE:
+          </p>
+          <p class="text-lg text-white glacial" style="font-size: 15px">
+            LUCIANA & ADRIEL
+          </p>
+        </div>
+      </div>
+      <div
+        class="w-full flex flex-col items-center mt-1 mb-1"
+        id="bloco-logo-cha"
+      >
+        <img
+          class="w-48"
+          src="src\img\logo_cha_svg.svg"
+          alt="logo do cha de casa nova"
+        />
+      </div>
+      <div
+        class="w-full flex flex-col items-start mb-2"
+        id="bloco-textos-centrais"
+      >
+        <p class="text-white mb-2 glacial">💖 Queridos amigos e familiares,</p>
+        <p class="text-white mb-2 glacial">
+          Chegou o momento de celebrar um novo capítulo da nossa história! 💑
+          Estamos abrindo as portas do nosso cantinho cheio de amor e sonhos, e
+          queremos compartilhar essa alegria com vocês!
+        </p>
+        <p class="text-white glacial">📅 Data: 21 de junho de 2025</p>
+        <p class="text-white glacial">⏰ Horário: 18h00</p>
+        <p class="text-white glacial mb-2">
+          📍 Local:
+          <a
+            class="font-semibold glacial decoration-none text-white underline underline-offset-2"
+            href="https://maps.app.goo.gl/WpjdC9vfTYGrHE6u9"
+            >Melo Recepções (R. São Patrick, 40 - Planalto, Parnamirim - RN,
+            59149-500).</a
+          >
+        </p>
+        <p class="text-white glacial mb-2">
+          Contamos com você para celebrar conosco! Confirmem presença até 10 de
+          junho de 2025 para organizarmos tudo com todo amor.
+        </p>
+        <p class="text-white glacial mb-2">
+          💞 Mal podemos esperar para recebê-los em nosso novo lar!
+        </p>
+        <p class="text-white glacial">Com carinho,</p>
+        <p class="text-white glacial mb-2">Luciana e Adriel</p>
+      </div>
+      <div class="w-full flex flex-col items-center gap-3">
+        <button
+          type="button"
+          class="montserrat cursor-pointer w-full flex items-center justify-center bg-white font-bold py-2 px-4 rounded-md shadow-md hover:shadow-2xl transition duration-300 ease-in-out"
+          style="text-decoration: none; color: #725a44"
+          id="botao-01"
+        >
+          CONFIRMAR PRESENÇA 📍💖
+        </button>
+        <a
+          class="montserrat w-full flex items-center justify-center bg-transparent font-bold py-2 px-4 rounded-md border-4 shadow-md hover:shadow-2xl transition duration-300 ease-in-out"
+          href="https://cha-de-casa-nova-zy7z.listaideal.com.br/pt/"
+          style="text-decoration: none; color: white"
+          id="botao-02"
+          >VER LISTA DE PRESENTES 🎁</a
+        >
+      </div>
+    </main>
+    <!-- Modal (invisível inicialmente) -->
+    <div
+      id="modal-confirmacao"
+      class="fixed inset-0 backdrop-blur-xs backdrop-brightness-50 flex items-center justify-center hidden z-50"
+    >
+      <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6 relative">
+        <h2 class="text-xl font-semibold mb-4">Confirme sua presença</h2>
+        <form id="form-confirmacao" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium">Nome:</label>
+            <input
+              type="text"
+              id="input-nome"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Número de telefone:</label>
+            <input
+              type="number"
+              id="input-telefone"
+              minlength="9"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400"
+              required
+            />
+          </div>
+          <div class="flex justify-end gap-4 pt-4">
+            <button
+              type="button"
+              id="btn-cancelar"
+              class="cursor-pointer border-2 border-gray-400 px-4 py-2 rounded text-gray-600 hover:border-red-600 hover:text-red-600"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="cursor-pointer bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            >
+              Confirmar Presença
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document
+            .querySelector("#bloco-backgroun")
+            ?.classList.add("animar-left");
+        }, 100);
+
+        setTimeout(() => {
+          document
+            .querySelector("#bloco-anfitriao")
+            ?.classList.add("animar-blur");
+        }, 300);
+
+        setTimeout(() => {
+          document
+            .querySelector("#bloco-logo-cha")
+            ?.classList.add("animar-blur");
+        }, 600);
+
+        setTimeout(() => {
+          document
+            .querySelector("#bloco-textos-centrais")
+            ?.classList.add("animar-left");
+        }, 1000);
+
+        setTimeout(() => {
+          document.querySelector("#botao-01")?.classList.add("animar-bottom");
+        }, 1400);
+
+        setTimeout(() => {
+          document.querySelector("#botao-02")?.classList.add("animar-bottom");
+        }, 1800);
+      });
+
+      // Função para abrir o modal
+      document.getElementById("botao-01").addEventListener("click", () => {
+        document.getElementById("modal-confirmacao").classList.remove("hidden");
+      });
+
+      document.getElementById("btn-cancelar").addEventListener("click", () => {
+        document.getElementById("modal-confirmacao").classList.add("hidden");
+      });
+
+      document
+        .getElementById("form-confirmacao")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const nome = document.getElementById("input-nome").value.trim();
+          const numero = document.getElementById("input-telefone").value.trim();
+
+          if (numero.length < 9) {
+            alert("O número de telefone deve ter no mínimo 9 dígitos.");
+            return;
+          }
+          if (!nome || !numero) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+          }
+
+          try {
+            const response = await fetch(
+              "http://api-confirmacao-lucianaeadriel.ddns.net:2106/confirmar",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome, numero_de_telefone: numero }),
+              }
+            );
+
+            const resultado = await response.json();
+            alert(resultado.message_acao || "Confirmação enviada!");
+          } catch (error) {
+            alert("Erro ao enviar confirmação. Tente novamente.");
+            console.error(error);
+          }
+
+          document.getElementById("modal-confirmacao").classList.add("hidden");
+        });
+    </script>
+  </body>
+</html>
