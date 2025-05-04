@@ -89,19 +89,47 @@
       class="w-full max-w-lg p-5 m-4 flex flex-col items-center justify-center rounded-2xl shadow-2xl backdrop-blur-xs backdrop-brightness-65 pass transform transition hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
       id="bloco-backgroun"
     >
-      <div class="w-full flex flex-row" id="bloco-anfitriao">
-        <img
-          class="w-11 h-11 rounded-full"
-          src="src\img\foto_perfil.jpg"
-          alt="imagem de perfil dos anfitriões"
-        />
-        <div class="flex flex-col ml-2">
-          <p class="text-white montserrat" style="font-size: 10px">
-            UM CONVITE ESPECIAL DE:
-          </p>
-          <p class="text-lg text-white glacial" style="font-size: 15px">
-            LUCIANA & ADRIEL
-          </p>
+      <div
+        class="w-full flex flex-row items-center justify-between"
+        id="bloco-anfitriao"
+      >
+        <div class="flex flex-row">
+          <img
+            class="w-11 h-11 rounded-full"
+            src="src\img\foto_perfil.jpg"
+            alt="imagem de perfil dos anfitriões"
+          />
+          <div class="flex flex-col ml-2">
+            <p class="text-white montserrat" style="font-size: 10px">
+              UM CONVITE ESPECIAL DE:
+            </p>
+            <p class="text-lg text-white glacial" style="font-size: 15px">
+              LUCIANA & ADRIEL
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-row" id="block-confirmed" style="display: none">
+          <div
+            class="flex flex-row gap-2 px-2 py-1 text-white bg-linear-to-t from-green-600 to-green-500 shadow rounded-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+              />
+            </svg>
+            <p class="montserrat" style="font-size: 12px">
+              Presença Confirmada
+            </p>
+          </div>
         </div>
       </div>
       <div
@@ -136,7 +164,7 @@
           >
         </p>
         <p class="text-white glacial mb-2">
-          Contamos com você para celebrar conosco! Confirmem presença até 10 de
+          Contamos com você para celebrar conosco! Confirmem presença até 01 de
           junho de 2025 para organizarmos tudo com todo amor.
         </p>
         <p class="text-white glacial mb-2">
@@ -189,6 +217,27 @@
               class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400"
               required
             />
+          </div>
+          <div
+            class="text-green-700 gap-2 w-full flex flex-row items-center justify-center"
+            id="block-loading-confirm"
+            style="display: none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6 animate-spin"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
+            <p>Enviando confirmação…</p>
           </div>
           <div class="flex justify-end gap-4 pt-4">
             <button
@@ -259,6 +308,10 @@
 
           const nome = document.getElementById("input-nome").value.trim();
           const numero = document.getElementById("input-telefone").value.trim();
+          const block_configmed = document.getElementById("block-confirmed");
+          const block_loading_confirm = document.getElementById(
+            "block-loading-confirm"
+          );
 
           if (numero.length < 9) {
             alert("O número de telefone deve ter no mínimo 9 dígitos.");
@@ -270,8 +323,9 @@
           }
 
           try {
+            block_loading_confirm.style.display = "flex";
             const response = await fetch(
-              "http://api-confirmacao-lucianaeadriel.ddns.net:2106/confirmar",
+              "http://apiconfirm-luead.ddns.net/confirmar",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -280,12 +334,14 @@
             );
 
             const resultado = await response.json();
+            block_configmed.style.display = "flex";
+            block_loading_confirm.style.display = "none";
             alert(resultado.message_acao || "Confirmação enviada!");
           } catch (error) {
+            block_loading_confirm.style.display = "none";
             alert("Erro ao enviar confirmação. Tente novamente.");
             console.error(error);
           }
-
           document.getElementById("modal-confirmacao").classList.add("hidden");
         });
     </script>
